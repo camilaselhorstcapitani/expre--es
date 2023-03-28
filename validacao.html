@@ -22,15 +22,19 @@
 <body>
 
     Digite seu CEP:
-    <input type="text" id="cep" onkeyup="ValidarCEP();">
+    <input maxlength="9" type="text" id="cep" onkeyup="ValidarCEP();">
 
 </body>
 <script>
     function ValidarCEP()
     {
         //ACESSE O SITE regex101.com
-        expressao = /[0-9]{5}-[0-9]{3}/g;   
+        expressao = /[0-9]{5}-[0-9]{3}$/g;   
         texto = cep.value;
+        if (texto.length==5)
+        {
+            cep.value = texto + "-";
+        }
         resposta = expressao.test(texto)
         if (resposta==true)
         {
